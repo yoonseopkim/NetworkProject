@@ -60,7 +60,7 @@ public class GamePanel extends JPanel implements KeyListener {
         addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                gameMap.initializeBlocks(getWidth(), getHeight()); // 맵 객체에게 초기화 요청
+                gameMap.initializeBlocks(getX(), getY(), getWidth(), getHeight()); // 맵 객체에게 초기화 요청
             }
         });
 
@@ -105,15 +105,6 @@ public class GamePanel extends JPanel implements KeyListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        // 배경 그리기
-//        g.setColor(Color.pink);
-//        g.fillRect(0, 0, getWidth(), getHeight());
-
-//        // 캐릭터 그리기
-//        g.setColor(Color.white);
-//        g.fillOval(character.getX(), character.getY(), character.getCharacterSize(), character.getCharacterSize());
-
-
         // 배경 이미지 그리기 (화면 전체에 맞춤)
         g.drawImage(backgroundImage, 0, 0, this.getWidth(), this.getHeight(), this);
 
@@ -126,13 +117,12 @@ public class GamePanel extends JPanel implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-        // 이 메소드는 구현하지 않아도 됩니다.
+
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
-//        switch (key) {
             switch (e.getKeyCode()) {
             case KeyEvent.VK_LEFT:
                 pressedKeys.add(Key.LEFT);
@@ -143,16 +133,6 @@ public class GamePanel extends JPanel implements KeyListener {
             case KeyEvent.VK_UP:
                 pressedKeys.add(Key.UP);
                 break;
-            // You can handle DOWN key if you need to
-//            case KeyEvent.VK_LEFT:
-//                character.moveLeft();
-//                break;
-//            case KeyEvent.VK_RIGHT:
-//                character.moveRight();
-//                break;
-//            case KeyEvent.VK_UP:
-//                character.jump(getHeight());
-//                break;
         }
         // 캐릭터가 창 밖으로 나가지 않도록 경계 확인
         if (character.getX() < 0) {
@@ -171,9 +151,6 @@ public class GamePanel extends JPanel implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-//        int key = e.getKeyCode();
-//        if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_RIGHT) {
-//            character.decelerate();
         switch (e.getKeyCode()) {
             case KeyEvent.VK_LEFT:
                 pressedKeys.remove(Key.LEFT);
@@ -184,7 +161,6 @@ public class GamePanel extends JPanel implements KeyListener {
             case KeyEvent.VK_UP:
                 pressedKeys.remove(Key.UP);
                 break;
-            // Handle the DOWN key release if needed
         }
     }
 }

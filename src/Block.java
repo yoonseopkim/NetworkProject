@@ -25,12 +25,24 @@ public class Block {
         g.fillRect(x, y, width, height);
     }
     // Define the getX() method to return the x coordinate
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
     public int getX() {
-        return this.x;
+        return x;
     }
+
     public int getY() {
-        return this.y;
+        return y;
     }
+
+
     // Getter 메서드들...
 }
 

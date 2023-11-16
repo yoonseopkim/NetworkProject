@@ -4,26 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Map {
-    private List<Block> blocks;
+    List<Block> blocks;
 
     public Map() {
         blocks = new ArrayList<>();
+        this.blocks = new ArrayList<Block>();
         // 블록 초기화
-//        initializeBlocks();
+//        initializeBlocks(new Block());
     }
 
-    void initializeBlocks(int width, int height) {
-//        blocks.clear(); // 블록 리스트를 비웁니다.
-
-
-        blocks.add(new Block(400, 850, 400, 50)); //이게 바닥블록
-        blocks.add(new Block(1200, 850, 600, 50)); //이게 바닥블록
-        blocks.add(new Block(100, 300, 50, 50));
-        blocks.add(new Block(200, 250, 100, 50));
-        blocks.add(new Block(300, 200, 150, 50)); // 추가 예시 블록
-        blocks.add(new Block(450, 150, 50, 50));  // 추가 예시 블록;
-        // ... 더 많은 블록 추가 가능 ...
-    }
 
 
     public void checkCollisions(ElementalCharacter character) {
@@ -32,47 +21,53 @@ public class Map {
         boolean onTopOfBlock = false;
 
         for (Block block : blocks) {
-//            if (block.isCollision(character)) {
-//                if (prevY + character.getCharacterSize() <= block.getY()) {
-//                    // 캐릭터가 블록 위로 올라갔다는 것을 의미합니다.
-//                    character.setY(block.getY() - character.getCharacterSize());
-//                    character.setOnGround(true); // 캐릭터가 땅에 닿았다고 설정
-//                    onTopOfBlock = true;
-//                } else {
-//                    // 측면 충돌 처리
-//                    character.setX(prevX);
-//                }
-//                break;
-//            }
-//        }
-//
-//        if (!onTopOfBlock) {
-//            character.setOnGround(false); // 캐릭터가 공중에 있다고 설정
-//        }
-            System.out.println("Checking collision with block at x=" + block.getX() + ", y=" + block.getY()); // 로그 추가
+            // 캐릭터가 블록의 위쪽에 있을 때만 onTopOfBlock을 true로 설정합니다.
             if (block.isCollision(character)) {
-                System.out.println("Collision detected with block at x=" + block.getX() + ", y=" + block.getY()); // 로그 추가
-                if (prevY + character.getCharacterSize() <= block.getY()) {
-                    // 캐릭터가 블록 위로 올라갔다는 것을 의미합니다.
-                    character.setY(block.getY() - character.getCharacterSize());
-                    character.setOnGround(true); // 캐릭터가 땅에 닿았다고 설정
+                if (prevY == block.getY()) {
+
+//                if (prevY + character.getCharacterSize() <= block.getY() && character.getY() + character.getCharacterSize() > block.getY()) {
+                    character.setVelocityY(0); // 캐릭터의 Y축 속도를 0으로 설정
+                   // character.setY(block.getY() - character.getCharacterSize()); // 캐릭터를 블록 위로 올립니다.
+                    character.setY(block.getY() ); // 캐릭터를 블록 위로 올립니다.
+                    character.setOnGround(true);
+
                     onTopOfBlock = true;
-                    System.out.println("Character is on top of the block."); // 로그 추가
+                    System.out.println("Character is on top of the block.");
                 } else {
-                    // 측면 충돌 처리
-                    character.setX(prevX);
-                    System.out.println("Side collision, moving character back to previous position."); // 로그 추가
+                    character.setVelocityX(0); // 캐릭터의 X축 속도를 0으로 설정
+                    character.setX(prevX); // 측면 충돌 시 캐릭터를 이전 X 위치로 되돌립니다.
+                    character.setX(0);
+
                 }
-                break;
+            } else if (!onTopOfBlock) {
+                character.setOnGround(false);
+              //  System.out.println("Character is not on top of any block.");
             }
+
+
+
+
+
         }
 
-        if (!onTopOfBlock) {
-            character.setOnGround(false); // 캐릭터가 공중에 있다고 설정
-            System.out.println("Character is not on top of any block."); // 로그 추가
-        }
+
+
     }
 
+
+    void initializeBlocks(int x, int y, int width, int height) {
+       blocks.clear(); // 블록 리스트를 비웁니다.
+
+
+        blocks.add(new Block(400, 650, 400, 50)); //이게 바닥블록
+        blocks.add(new Block(1200, 650, 600, 50)); //이게 바닥블록
+        blocks.add(new Block(1200, 550, 600, 50)); //이게 위
+        blocks.add(new Block(100, 300, 50, 50));
+        blocks.add(new Block(200, 250, 100, 50));
+        blocks.add(new Block(300, 200, 150, 50)); // 추가 예시 블록
+        blocks.add(new Block(450, 150, 50, 50));  // 추가 예시 블록;
+        // ... 더 많은 블록 추가 가능 ...
+    }
 
 
 

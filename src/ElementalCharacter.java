@@ -12,9 +12,6 @@ public class ElementalCharacter {
     private final int JUMP_POWER = 30; // 캐릭터의 점프 힘 (초기값 15)
     private final int GRAVITY = 2; // 중력의 힘
     private int velocityX = 0; // x축 속도
-
-
-
     private int velocityY = 0; // y축 속도
 
     private int panelHeight;
@@ -24,8 +21,8 @@ public class ElementalCharacter {
         this.element = element;
         this.power = power;
         this.health = health;
-        this.x = 150;
-        this.y = 750;
+        this.x = startX;
+        this.y = startY;
 
     }
 
@@ -69,10 +66,23 @@ public class ElementalCharacter {
     public int getY() {
         return this.y;
     }
-//    public int getY() {
-//        return y;
-//    }
-//
+
+
+    public int getVelocityX() {
+        return velocityX;
+    }
+
+    public void setVelocityX(int velocityX) {
+        this.velocityX = velocityX;
+    }
+
+    public int getVelocityY() {
+        return velocityY;
+    }
+
+    public void setVelocityY(int velocityY) {
+        this.velocityY = velocityY;
+    }
 
     // 캐릭터의 위치 setter
     public void setX(int x) {
@@ -83,25 +93,6 @@ public class ElementalCharacter {
         this.y = y;
     }
 
-//     캐릭터의 이동을 관리하는 메소드
-//     캐릭터의 x축 이동을 관리하는 메소드
-//    public void moveLeft() {
-//        velocityX = Math.max(velocityX - ACCELERATION, -MAX_SPEED); // 왼쪽으로 가속
-//        x += velocityX; // 속도에 따라 x 위치 업데이트
-//    }
-//
-//    public void moveRight() {
-//        velocityX = Math.min(velocityX + ACCELERATION, MAX_SPEED); // 오른쪽으로 가속
-//        x += velocityX; // 속도에 따라 x 위치 업데이트
-//    }
-//
-//    public void decelerate() {
-//        if (velocityX > 0) {
-//            velocityX = Math.max(velocityX - ACCELERATION, 0); // 오른쪽으로 이동 중이면 감속
-//        } else if (velocityX < 0) {
-//            velocityX = Math.min(velocityX + ACCELERATION, 0); // 왼쪽으로 이동 중이면 감속
-//        }
-//    }
 public void moveLeft() {
     if (velocityX > -MAX_SPEED) {
         velocityX -= ACCELERATION; // 왼쪽으로 가속
@@ -141,3 +132,6 @@ public void moveLeft() {
         return CHARACTER_SIZE;
     }
 }
+
+
+

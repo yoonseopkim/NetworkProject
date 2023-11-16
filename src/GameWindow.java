@@ -11,8 +11,8 @@ public class GameWindow extends JFrame {
         super("별의 커비 게임"); // 창의 제목 설정
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        setSize(1600,900);
-//        setResizable(false); // 창 크기 변경 불가능하게 설정
+        setSize(1280,720);
+        setResizable(false); // 창 크기 변경 불가능하게 설정
 
         // GamePanel 인스턴스 생성 및 추가
         gamePanel = new GamePanel(player1.getCharacter());
