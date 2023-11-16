@@ -23,20 +23,22 @@ public class Map {
         for (Block block : blocks) {
             // 캐릭터가 블록의 위쪽에 있을 때만 onTopOfBlock을 true로 설정합니다.
             if (block.isCollision(character)) {
-                if (prevY == block.getY()) {
-
-//                if (prevY + character.getCharacterSize() <= block.getY() && character.getY() + character.getCharacterSize() > block.getY()) {
-                    character.setVelocityY(0); // 캐릭터의 Y축 속도를 0으로 설정
+//                if (prevY == block.getY()) {
+                if (prevY + character.getCharacterSize() <= block.getY() && character.getY() + character.getCharacterSize() > block.getY()) {
+//                    character.setVelocityY(0); // 캐릭터의 Y축 속도를 0으로 설정
                    // character.setY(block.getY() - character.getCharacterSize()); // 캐릭터를 블록 위로 올립니다.
                     character.setY(block.getY() ); // 캐릭터를 블록 위로 올립니다.
+                    character.setY(prevY-10); // 측면 충돌 시 캐릭터를 이전 X 위치로 되돌립니다.
                     character.setOnGround(true);
 
                     onTopOfBlock = true;
-                    System.out.println("Character is on top of the block.");
+                    System.out.println("블록 밟음");
                 } else {
-                    character.setVelocityX(0); // 캐릭터의 X축 속도를 0으로 설정
-                    character.setX(prevX); // 측면 충돌 시 캐릭터를 이전 X 위치로 되돌립니다.
-                    character.setX(0);
+//                    character.setVelocityX(0); // 캐릭터의 X축 속도를 0으로 설정
+                    System.out.println("측면충돌함");
+                    character.setX(prevX-10); // 측면 충돌 시 캐릭터를 이전 X 위치로 되돌립니다.
+//                    character.setX(character.startX());
+//                    character.setY(character.startY());
 
                 }
             } else if (!onTopOfBlock) {

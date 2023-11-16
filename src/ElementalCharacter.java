@@ -26,7 +26,12 @@ public class ElementalCharacter {
 
     }
 
-
+    public int startX() {
+        return startX();
+    }
+    public int startY() {
+        return startY();
+    }
 
     // 매 프레임마다 호출될 메소드
     public void applyGravity(int panelHeight) {
@@ -60,11 +65,11 @@ public class ElementalCharacter {
 
     // 캐릭터의 위치 getter
     public int getX() {
-        return this.x;
+        return x;
     }
 
     public int getY() {
-        return this.y;
+        return y;
     }
 
 
