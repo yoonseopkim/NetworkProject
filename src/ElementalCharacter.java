@@ -6,7 +6,6 @@ public class ElementalCharacter {
     private int x; // 캐릭터의 X 좌표
     private int y; // 캐릭터의 Y 좌표
     private final int CHARACTER_SIZE = 50; // 캐릭터의 크기
-
     private final int MAX_SPEED = 10; // 캐릭터의 최대 속도 (초기값 10)
     private final int ACCELERATION = 5; // 캐릭터의 가속도(초기값 2)
     private final int JUMP_POWER = 30; // 캐릭터의 점프 힘 (초기값 15)
@@ -17,13 +16,11 @@ public class ElementalCharacter {
     private int panelHeight;
 
     public ElementalCharacter(String element, int power, int health, int startX, int startY) {
-
         this.element = element;
         this.power = power;
         this.health = health;
         this.x = startX;
         this.y = startY;
-
     }
 
     public int startX() {
@@ -43,8 +40,6 @@ public class ElementalCharacter {
             y = panelHeight - CHARACTER_SIZE; // 바닥에 위치 설정
             velocityY = 0; // 바닥에 닿으면 y축 속도 0
         }
-
-
     }
 
     // 캐릭터가 땅에 닿았는지 설정하는 메소드
@@ -65,11 +60,11 @@ public class ElementalCharacter {
 
     // 캐릭터의 위치 getter
     public int getX() {
-        return x;
+        return this.x;
     }
 
     public int getY() {
-        return y;
+        return this.y;
     }
 
 
@@ -136,6 +131,8 @@ public void moveLeft() {
     public int getCharacterSize() {
         return CHARACTER_SIZE;
     }
+
+
 }
 
 
