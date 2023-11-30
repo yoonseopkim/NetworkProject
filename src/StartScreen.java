@@ -7,7 +7,6 @@
 //    public StartScreen() {
 //        // 스타트 화면 설정
 //        setTitle("Game Start");
-//        setSize(300, 200);
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //        setLocationRelativeTo(null); // 화면 중앙에 위치
 //        setResizable(false); // 창 크기 변경 불가능하게 설정

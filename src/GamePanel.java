@@ -27,7 +27,7 @@ public class GamePanel extends JPanel implements KeyListener {
         addKeyListener(this); // 이 패널에 KeyListener를 추가
 //        backgroundImage = new ImageIcon("배경.jpg").getImage();
 //        characterImage = new ImageIcon("캐릭터.png").getImage();
-        backgroundImage = new ImageIcon(getClass().getResource("/배경.png")).getImage();
+        backgroundImage = new ImageIcon(getClass().getResource("/임시맵.png")).getImage();
         characterImage = new ImageIcon(getClass().getResource("/캐릭터.png")).getImage();
 
 //        // 블록 리스트 초기화
@@ -73,7 +73,6 @@ public class GamePanel extends JPanel implements KeyListener {
             repaint(); // 화면 다시 그리기
         });
         timer.start();
-
     }
 
     private void updateCharacter() {
