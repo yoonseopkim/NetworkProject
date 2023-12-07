@@ -1,4 +1,6 @@
-    public class ElementalCharacter {
+import javax.swing.*;
+
+public class ElementalCharacter {
         private String element;
         private int power;
         private int health;
@@ -51,6 +53,16 @@
             if (onGround) {
                 velocityY = 0; // 땅에 닿으면 수직 속도를 0으로 설정
                 gravity = 0;
+            }
+            else {
+                // 타이머를 사용하여 게임 루프 구현, 여기를 수정해야함
+//                Timer timer = new Timer(1000 / 60, e -> {
+//                    updateCharacter();
+//                    character.applyGravity(getHeight()); // 중력 적용
+//                    character.decelerate(); // 캐릭터 감속
+//                    repaint(); // 화면 다시 그리기
+//                });
+//                timer.start();
             }
         }
 
